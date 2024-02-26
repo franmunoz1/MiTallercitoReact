@@ -1,6 +1,6 @@
 import './ItemListContainer.css'
 
-const ItemListContainer = () => {
+const ItemListContainer = ({ saludo }) => {
 
     const mostrarContenido = () => {
         alert("Hola!")
@@ -8,7 +8,8 @@ const ItemListContainer = () => {
 
     return (
         <>
-            <button className="btnItemList" onClick={(mostrarContenido)}>Pulsar para revelar</button>
+            <h2 style={{ textAlign: 'center' }}>{saludo}</h2>
+            <button className="btnItemList" onClick={(mostrarContenido)}>Pulsar para saludar</button>
         </>
 
     )
