@@ -1,7 +1,7 @@
 /*eslint-disable react/prop-types*/
 import './ItemListContainer.css'
 
-const ItemListContainer = ({ greet }) => {
+const ItemListContainer = ({ greeting }) => {
 
     const showContent = () => {
         alert("Hola!")
@@ -9,7 +9,7 @@ const ItemListContainer = ({ greet }) => {
 
     return (
         <>
-            <h2 style={{ textAlign: 'center', color: 'grey', padding: '1rem' }}>{greet}</h2>
+            <h2 style={{ textAlign: 'center', color: 'grey', padding: '1rem' }}>{greeting}</h2>
             <button className="rounded-full btnItemList d-flex mx-auto" onClick={(showContent)}>Pulsar para saludar</button>
         </>
 

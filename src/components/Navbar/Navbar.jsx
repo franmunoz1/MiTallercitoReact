@@ -40,7 +40,7 @@ export function Navbar() {
                                             <img
                                                 className="h-full w-full icon object-cover"
                                                 src='/img/iconoNuevo.png'
-                                                alt="Your Company"
+                                                alt="Icono Mi Tallercito"
                                             />
                                         </div>
                                     </div>
@@ -76,7 +76,7 @@ export function Navbar() {
                                         as="a"
                                         href={item.href}
                                         className={classNames(
-                                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                            item.current ? 'bg-gray-900 text-white' : 'text-black hover:bg-black hover:text-white',
                                             'block rounded-md px-3 py-2 text-base font-medium'
                                         )}
                                         aria-current={item.current ? 'page' : undefined}
