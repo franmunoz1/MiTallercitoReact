@@ -9,7 +9,7 @@ const ItemListContainer = ({ greet }) => {
 
     return (
         <>
-            <h2 style={{ textAlign: 'center', color: 'grey' }}>{greet}</h2>
+            <h2 style={{ textAlign: 'center', color: 'grey', padding: '1rem' }}>{greet}</h2>
             <button className="rounded-full btnItemList d-flex mx-auto" onClick={(showContent)}>Pulsar para saludar</button>
         </>
 
