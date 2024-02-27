@@ -1,15 +1,16 @@
+/*eslint-disable react/prop-types*/
 import './ItemListContainer.css'
 
-const ItemListContainer = ({ saludo }) => {
+const ItemListContainer = ({ greet }) => {
 
-    const mostrarContenido = () => {
+    const showContent = () => {
         alert("Hola!")
     }
 
     return (
         <>
-            <h2 style={{ textAlign: 'center' }}>{saludo}</h2>
-            <button className="btnItemList" onClick={(mostrarContenido)}>Pulsar para saludar</button>
+            <h2 style={{ textAlign: 'center', color: 'red' }}>{greet}</h2>
+            <button className="btnItemList" onClick={(showContent)}>Pulsar para saludar</button>
         </>
 
     )
