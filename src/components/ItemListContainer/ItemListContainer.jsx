@@ -9,8 +9,8 @@ const ItemListContainer = ({ greet }) => {
 
     return (
         <>
-            <h2 style={{ textAlign: 'center', color: 'red' }}>{greet}</h2>
-            <button className="btnItemList" onClick={(showContent)}>Pulsar para saludar</button>
+            <h2 style={{ textAlign: 'center', color: 'grey' }}>{greet}</h2>
+            <button className="rounded-full btnItemList mx-auto" onClick={(showContent)}>Pulsar para saludar</button>
         </>
 
     )
