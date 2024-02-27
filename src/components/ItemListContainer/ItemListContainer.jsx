@@ -10,7 +10,7 @@ const ItemListContainer = ({ greet }) => {
     return (
         <>
             <h2 style={{ textAlign: 'center', color: 'grey' }}>{greet}</h2>
-            <button className="rounded-full btnItemList d-flex mx-auto" onClick={(showContent)}>Pulsar simular carrito</button>
+            <button className="rounded-full btnItemList d-flex mx-auto" onClick={(showContent)}>Pulsar para saludar</button>
         </>
 
     )
