@@ -36,7 +36,7 @@ export function Navbar() {
                                 </div>
                                 <div className="flex flex-1 items-center justify-center sm:justify-start">
                                     <div className="flex flex-shrink-0 items-center">
-                                        <div className='w-20 h-20 overflow-hidden'>
+                                        <div className='w-20 h-20 overflow-hidden items-center'>
                                             <img
                                                 className="h-full w-full icon object-cover"
                                                 src='/img/iconoNuevo.png'
