@@ -17,7 +17,7 @@ function classNames(...classes) {
 export function Navbar() {
     return (
         <>
-            <Disclosure as="nav" className="bg-stone-400">
+            <Disclosure as="nav" className="nav">
                 {({ open }) => (
                     <>
                         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -36,9 +36,9 @@ export function Navbar() {
                                 </div>
                                 <div className="flex flex-1 items-center justify-center sm:justify-start">
                                     <div className="flex flex-shrink-0 items-center">
-                                        <div>
+                                        <div className='w-20 h-20 overflow-hidden'>
                                             <img
-                                                className="w-auto icon"
+                                                className="h-full w-full icon object-cover"
                                                 src='/img/iconoNuevo.png'
                                                 alt="Your Company"
                                             />
