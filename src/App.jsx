@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <ItemListContainer greeting='Somos Mi Tallercito y nos dedicamos a la venta de muebles para niños y hogares' />
+      <ItemListContainer greeting={'Somos Mi Tallercito y nos dedicamos a la venta de muebles para niños y hogares'} />
 
     </>
   )
