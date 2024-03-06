@@ -1,4 +1,5 @@
 /*eslint-disable react/prop-types*/
+import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
 import Item from '../Item/Item'
 import './ItemListContainer.css'
@@ -44,10 +45,22 @@ const ItemListContainer = ({ greeting }) => {
         }
     ]
 
+    const prod = new Promise((resolve) => setTimeout(() => {
+        resolve(products)
+    }, 3000));
+
+    const [allProducts, setAllProducts] = useState([])
+
+    useEffect(() => {
+        prod.then(data => {
+            setAllProducts(data)
+        })
+    })
+
     return (
         <>
             <h2 style={{ textAlign: 'center', color: 'grey', padding: '1rem' }}>{greeting}</h2>
-            <ItemList products={products} />
+            <ItemList products={allProducts} />
             <Item />
         </>
 
