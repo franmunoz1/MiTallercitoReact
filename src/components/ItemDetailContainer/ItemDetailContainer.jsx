@@ -1,9 +1,12 @@
+import ItemDetail from "../ItemDetail/ItemDetail"
+
 const ItemDetailContainer = () => {
 
-
-
     return (
-        <div>ItemDetailContainer</div>
+        <>
+            <div>ItemDetailContainer</div>
+            <ItemDetail />
+        </>
     )
 }
 
