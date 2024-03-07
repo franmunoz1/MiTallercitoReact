@@ -1,11 +1,23 @@
+/* eslint-disable react/prop-types */
 import ItemDetail from "../ItemDetail/ItemDetail"
+import { getProductById } from "../../helpers/getProducts"
+import { useState, useEffect } from "react"
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({ itemId }) => {
+
+    const [item, setItem] = useState(null)
+
+    useEffect(() => {
+        getProductById(itemId)
+            .then((res) => {
+                setItem(res)
+            })
+    }, [])
+
 
     return (
         <>
-            <div>ItemDetailContainer</div>
-            <ItemDetail />
+            {item && <ItemDetail item={item} />}
         </>
     )
 }
