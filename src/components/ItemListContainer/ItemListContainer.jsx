@@ -1,28 +1,30 @@
 /*eslint-disable react/prop-types*/
 import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
-import Item from '../Item/Item'
 import './ItemListContainer.css'
-import { getProducts } from '../../helpers/getProducts'
+import { getProductByCategory } from '../../helpers/getProducts'
+import { useParams } from 'react-router-dom'
 
 const ItemListContainer = () => {
 
     const [products, setProducts] = useState([])
-    console.log(products)
+
+    const { categoryName } = useParams();
+
+    console.log(categoryName)
 
     useEffect(() => {
-        getProducts()
+        getProductByCategory(categoryName)
             .then((res) => {
                 setProducts(res)
             })
 
-    }, [])
+    }, [categoryName])
 
 
     return (
         <>
             <ItemList products={products} />
-            <Item />
         </>
 
     )

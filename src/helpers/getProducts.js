@@ -22,3 +22,27 @@ export const getProductById = (id) => {
         }
     })
 }
+
+export const getProductByCategory = (category) => {
+    return new Promise((resolve, reject) => {
+
+        let item = []
+
+        if (!category) {
+
+            item = getProducts()
+            resolve(item)
+            return
+        }
+
+        item = data.filter((prod) => prod.category === category)
+
+        if (item) {
+            resolve(item)
+        } else {
+            reject({
+                error: "No se encontro la categoria"
+            })
+        }
+    })
+}

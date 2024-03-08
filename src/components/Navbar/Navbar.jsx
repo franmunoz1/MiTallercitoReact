@@ -6,10 +6,9 @@ import Brand from '../Brand/Brand'
 import { Link } from 'react-router-dom'
 
 const navigation = [
-    { name: 'Niños', href: '/ninos', current: false },
-    { name: 'Muebles', href: '/muebles', current: false },
-    { name: 'Decoracion', href: '/decoracion', current: false },
-    { name: 'Restauracion', href: '/restauracion', current: false },
+    { name: 'Niños', href: '/category/ninos', current: false },
+    { name: 'Muebles', href: '/category/muebles', current: false },
+    { name: 'Decoracion', href: '/category/decoracion', current: false },
 ]
 
 function classNames(...classes) {
