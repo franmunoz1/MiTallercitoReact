@@ -3,8 +3,9 @@ import './Loader.css'
 const Loader = () => {
     return (
         <>
-            <span>hola</span>
-            <span className="loader"></span>
+            <p>Cargando productos</p>
+            <div className="loader"></div>
+
         </>
 
     )
