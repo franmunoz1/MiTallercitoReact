@@ -9,6 +9,7 @@ const navigation = [
     { name: 'Niños', href: '/category/ninos', current: false },
     { name: 'Muebles', href: '/category/muebles', current: false },
     { name: 'Decoracion', href: '/category/decoracion', current: false },
+
 ]
 
 function classNames(...classes) {

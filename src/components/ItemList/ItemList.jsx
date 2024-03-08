@@ -2,8 +2,13 @@
 /*eslint-disable react/prop-types*/
 
 import Item from "../Item/Item"
+import Loader from "../Loader/Loader"
 
-const ItemList = ({ products }) => {
+const ItemList = ({ products, loading }) => {
+
+    if (loading) {
+        return <Loader />
+    }
 
     return (
         <div className="bg-white" >

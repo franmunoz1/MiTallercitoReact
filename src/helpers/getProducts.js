@@ -11,38 +11,45 @@ export const getProducts = () => {
 
 export const getProductById = (id) => {
     return new Promise((resolve, reject) => {
-        const item = data.find((prod) => prod.id === id)
+        setTimeout(() => {
+            const item = data.find((prod) => prod.id === id)
 
-        if (item) {
-            resolve(item)
-        } else {
-            reject({
-                error: "No se encontro el producto"
-            })
-        }
+            if (item) {
+                resolve(item)
+            } else {
+                reject({
+                    error: "No se encontro el producto"
+                })
+            }
+        }, 2000)
+
     })
 }
 
 export const getProductByCategory = (category) => {
     return new Promise((resolve, reject) => {
 
-        let item = []
+        setTimeout(() => {
+            let item = []
 
-        if (!category) {
+            if (!category) {
 
-            item = getProducts()
-            resolve(item)
-            return
-        }
+                item = getProducts()
+                resolve(item)
+                return
+            }
 
-        item = data.filter((prod) => prod.category === category)
+            item = data.filter((prod) => prod.category === category)
 
-        if (item) {
-            resolve(item)
-        } else {
-            reject({
-                error: "No se encontro la categoria"
-            })
-        }
+            if (item) {
+                resolve(item)
+            } else {
+                reject({
+                    error: "No se encontro la categoria"
+                })
+            }
+        }, 2000)
+
+
     })
 }
