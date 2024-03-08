@@ -17,6 +17,7 @@ const ItemListContainer = () => {
     console.log(categoryName)
 
     useEffect(() => {
+        setLoading(true);
         getProductByCategory(categoryName)
             .then((res) => {
                 setProducts(res);
