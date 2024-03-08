@@ -2,13 +2,10 @@ import './Loader.css'
 
 const Loader = () => {
     return (
-        <>
-            <p>Cargando productos</p>
+        <div className="flex items-center justify-center h-screen">
             <div className="loader"></div>
-
-        </>
-
-    )
+        </div>
+    );
 }
 
-export default Loader
+export default Loader;
