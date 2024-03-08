@@ -12,7 +12,7 @@ const ItemDetailContainer = ({ itemId }) => {
             .then((res) => {
                 setItem(res)
             })
-    }, [])
+    }, [itemId])
 
 
     return (

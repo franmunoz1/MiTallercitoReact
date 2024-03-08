@@ -2,12 +2,14 @@ import './Navbar.css'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import CartWidget from '../CartWidget/CartWidget'
+import Brand from '../Brand/Brand'
+import { Link } from 'react-router-dom'
 
 const navigation = [
-    { name: 'Niños', href: '#', current: false },
-    { name: 'Muebles', href: '#', current: false },
-    { name: 'Decoracion', href: '#', current: false },
-    { name: 'Restauracion', href: '#', current: false },
+    { name: 'Niños', href: '/ninos', current: false },
+    { name: 'Muebles', href: '/muebles', current: false },
+    { name: 'Decoracion', href: '/decoracion', current: false },
+    { name: 'Restauracion', href: '/restauracion', current: false },
 ]
 
 function classNames(...classes) {
@@ -37,19 +39,15 @@ export function Navbar() {
                                 <div className="flex flex-1 items-center justify-center sm:justify-start">
                                     <div className="flex flex-shrink-0 items-center">
                                         <div className='w-20 h-20 overflow-hidden items-center'>
-                                            <img
-                                                className="h-full w-full icon object-cover"
-                                                src='/img/iconoNuevo.png'
-                                                alt="Icono Mi Tallercito"
-                                            />
+                                            <Link to="/"><Brand /></Link>
                                         </div>
                                     </div>
                                     <div className="hidden sm:ml-6 sm:block">
                                         <div className="flex space-x-4">
                                             {navigation.map((item) => (
-                                                <a
+                                                <Link
                                                     key={item.name}
-                                                    href={item.href}
+                                                    to={item.href}
                                                     className={classNames(
                                                         item.current ? 'bg-gray-900 text-white' : 'text-black hover:bg-black hover:text-white',
                                                         'rounded-md px-3 py-2 text-sm font-medium'
@@ -57,7 +55,7 @@ export function Navbar() {
                                                     aria-current={item.current ? 'page' : undefined}
                                                 >
                                                     {item.name}
-                                                </a>
+                                                </Link>
                                             ))}
                                         </div>
                                     </div>
