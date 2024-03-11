@@ -3,7 +3,7 @@ import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import CartWidget from '../CartWidget/CartWidget'
 import Brand from '../Brand/Brand'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const navigation = [
     { name: 'Niños', href: '/category/ninos', current: false },
@@ -17,6 +17,9 @@ function classNames(...classes) {
 }
 
 export function Navbar() {
+
+    const navigate = useNavigate();
+
     return (
         <>
             <Disclosure as="nav" className="nav">
@@ -61,7 +64,7 @@ export function Navbar() {
                                     </div>
                                 </div>
                                 <div>
-                                    <CartWidget />
+                                    <button onClick={() => navigate('/cart')}><CartWidget /></button>
                                 </div>
                             </div>
                         </div>

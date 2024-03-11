@@ -31,8 +31,6 @@ const ItemListContainer = () => {
     return (
         <>
             {loading ? <Loader /> : <ItemList products={products} />}
-
-
         </>
 
     )
