@@ -1,40 +1,20 @@
-import { useContext, useState } from "react"
+/* eslint-disable react/prop-types */
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 
-/* eslint-disable react/prop-types */
 const ItemDetail = ({ item }) => {
-
-    const { cart, setCart } = useContext(CartContext)
-
+    const cartContext = useContext(CartContext);
     const [quantity, setQuantity] = useState(1);
 
+    const { handleAdd } = cartContext
+
     const handlePlus = () => {
-        quantity < item.stock && setQuantity(quantity + 1)
-    }
+        quantity < item.stock && setQuantity(quantity + 1);
+    };
 
     const handleLess = () => {
         quantity > 1 && setQuantity(quantity - 1);
-    }
-
-
-
-    const handleAdd = () => {
-
-        const itemAgregado = { ...item, quantity }
-
-        const newCart = [...cart];
-
-        const findProduct = newCart.find((item) => item.id === itemAgregado.id)
-
-        if (findProduct) {
-            findProduct.quantity += quantity;
-            setCart(newCart)
-        } else {
-            setCart([...cart, itemAgregado])
-        }
-
-        console.log(cart)
-    }
+    };
 
     return (
         <>
@@ -56,7 +36,10 @@ const ItemDetail = ({ item }) => {
                             <button onClick={handleLess}>-</button>
                         </div>
 
-                        <button onClick={handleAdd} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
+                        <button
+                            onClick={() => handleAdd(item, quantity)}
+                            className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
+                        >
                             Agregar al carrito
                         </button>
                     </div>
