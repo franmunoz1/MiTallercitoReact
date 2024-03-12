@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 const Item = ({ product }) => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return (
         <article onClick={() => navigate(`/item/${product.id}`)} key={product.id} className="group cursor-pointer">

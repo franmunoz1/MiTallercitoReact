@@ -1,5 +1,41 @@
+import { useContext, useState } from "react"
+import { CartContext } from "../../context/CartContext";
+
 /* eslint-disable react/prop-types */
 const ItemDetail = ({ item }) => {
+
+    const { cart, setCart } = useContext(CartContext)
+
+    const [quantity, setQuantity] = useState(1);
+
+    const handlePlus = () => {
+        quantity < item.stock && setQuantity(quantity + 1)
+    }
+
+    const handleLess = () => {
+        quantity > 1 && setQuantity(quantity - 1);
+    }
+
+
+
+    const handleAdd = () => {
+
+        const itemAgregado = { ...item, quantity }
+
+        const newCart = [...cart];
+
+        const findProduct = newCart.find((item) => item.id === itemAgregado.id)
+
+        if (findProduct) {
+            findProduct.quantity += quantity;
+            setCart(newCart)
+        } else {
+            setCart([...cart, itemAgregado])
+        }
+
+        console.log(cart)
+    }
+
     return (
         <>
             <div className="container mx-auto p-4">
@@ -15,22 +51,12 @@ const ItemDetail = ({ item }) => {
                             <label htmlFor="quantity" className="mr-2">
                                 Cantidad:
                             </label>
-                            <select
-                                id="quantity"
-                                name="quantity"
-                                value=''
-                                onChange=''
-                                className="border p-2"
-                            >
-                                {[...Array(item.stock).keys()].map((num) => (
-                                    <option key={num + 1} defaultValue={num + 1}>
-                                        {num + 1}
-                                    </option>
-                                ))}
-                            </select>
+                            <button onClick={handlePlus}>+</button>
+                            <p>{quantity}</p>
+                            <button onClick={handleLess}>-</button>
                         </div>
 
-                        <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
+                        <button onClick={handleAdd} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
                             Agregar al carrito
                         </button>
                     </div>

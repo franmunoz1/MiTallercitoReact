@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
 
     const { id } = useParams()
 
-    console.log(id)
+
 
     useEffect(() => {
         getProductById(Number(id))
