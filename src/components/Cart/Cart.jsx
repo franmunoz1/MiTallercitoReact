@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-    const { cart } = useContext(CartContext);
+    const { cart, handleDelete } = useCart();
 
     const navigate = useNavigate();
 
@@ -23,7 +22,7 @@ const Cart = () => {
 
             <div>
                 <button onClick={() => navigate('/checkout')}>Ir a pagar</button>
-                <button>Vaciar carrito</button>
+                <button onClick={handleDelete}>Vaciar carrito</button>
             </div>
         </>
     );

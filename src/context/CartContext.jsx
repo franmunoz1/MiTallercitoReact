@@ -1,10 +1,16 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const CartContext = createContext();
 
+const initialCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+export const useCart = () => useContext(CartContext)
+
 const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+
+    const [cart, setCart] = useState(initialCart);
 
     const handleAdd = (item, quantity) => {
         const itemAgregado = { ...item, quantity };
@@ -20,8 +26,16 @@ const CartProvider = ({ children }) => {
         console.log(newCart)
     };
 
+    const handleDelete = () => {
+        setCart([]);
+    }
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }, [cart])
+
     return (
-        <CartContext.Provider value={{ cart, setCart, handleAdd }}>
+        <CartContext.Provider value={{ cart, setCart, handleAdd, handleDelete }}>
             {children}
         </CartContext.Provider>
     );
