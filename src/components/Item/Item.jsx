@@ -3,7 +3,6 @@
 import { useNavigate } from "react-router-dom"
 
 const Item = ({ product }) => {
-
     const navigate = useNavigate();
 
     return (
@@ -13,6 +12,7 @@ const Item = ({ product }) => {
                     src={product?.image}
                     alt=""
                     className="h-full w-full object-cover object-center group-hover:opacity-75"
+                    style={{ maxHeight: '200px', width: '100%' }}
                 />
             </div>
             <h3 className="mt-4 text-sm text-gray-700">{product.title}</h3>
@@ -21,4 +21,4 @@ const Item = ({ product }) => {
     )
 }
 
-export default Item
+export default Item;
