@@ -35,7 +35,7 @@ const Checkout = () => {
 
     return (
         <div className="py-8 p-2">
-            <h1 className="text-3xl font-bold mb-6">Finalizar compra</h1>
+            <h1 className="text-3xl font-bold mb-6">Completa tus datos para finalizar</h1>
             <form onSubmit={handleSubmit(buy)} className="space-y-4">
                 <input
                     type="text"

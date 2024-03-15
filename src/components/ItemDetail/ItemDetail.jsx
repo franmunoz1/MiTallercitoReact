@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ItemDetail = ({ item }) => {
     const cartContext = useContext(CartContext);
@@ -15,6 +18,17 @@ const ItemDetail = ({ item }) => {
     const handleLess = () => {
         quantity > 1 && setQuantity(quantity - 1);
     };
+
+    const notify = () => toast.success('Producto agregado al carrito!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
 
     return (
         <>
@@ -37,11 +51,15 @@ const ItemDetail = ({ item }) => {
                         </div>
 
                         <button
-                            onClick={() => handleAdd(item, quantity)}
+                            onClick={() => {
+                                handleAdd(item, quantity);
+                                notify();
+                            }}
                             className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
                         >
                             Agregar al carrito
                         </button>
+                        <ToastContainer />
                     </div>
                 </div>
             </div>

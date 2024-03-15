@@ -1,10 +1,29 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const Cart = () => {
     const { cart, handleDelete, totalPrice } = useContext(CartContext);
+
     const navigate = useNavigate();
+
+    const handleConfirm = () => {
+        Swal.fire({
+            title: '¿Estás seguro de vaciar el carrito?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Vaciar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                handleDelete();
+                Swal.fire(
+                    '¡Carrito vaciado con exito!',
+                );
+            }
+        });
+    };
 
     return (
         <div>
@@ -47,7 +66,9 @@ const Cart = () => {
                         <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" onClick={() => navigate('/checkout')}>
                             Ir a pagar
                         </button>
-                        <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" onClick={handleDelete}>
+                        <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" onClick={() => {
+                            handleConfirm();
+                        }}>
                             Vaciar carrito
                         </button>
                     </div>
