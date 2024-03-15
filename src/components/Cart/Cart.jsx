@@ -19,13 +19,20 @@ const Cart = () => {
                 <div className="p-4 space-y-4">
                     <div className="space-y-4">
                         {cart.map((product) => (
-                            <div key={product.id} className="flex items-center border p-4">
+                            <div key={product.id} className="flex items-center justify-between border p-4">
                                 <img src={product.image} alt={product.title} className="w-16 h-16 object-cover mr-4" />
                                 <div>
                                     <h2 className="text-lg font-semibold">{product.title}</h2>
                                     <p>Cantidad: {product.quantity}</p>
                                     <p>Precio unitario: {product.price}</p>
                                     <p>Precio total: {product.price * product.quantity}</p>
+
+                                </div>
+                                <div>
+                                    Cantidad
+                                </div>
+                                <div>
+                                    <button>🗑️</button>
                                 </div>
                             </div>
 
