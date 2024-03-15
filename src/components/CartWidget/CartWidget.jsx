@@ -4,11 +4,7 @@ import { CartContext } from '../../context/CartContext';
 import './CartWidget.css';
 
 const CartWidget = () => {
-    const { cart } = useContext(CartContext);
-
-    const quantityCart = () => {
-        return cart.reduce((acc, item) => acc + item.quantity, 0);
-    };
+    const { quantityCart } = useContext(CartContext);
 
     return (
         <>

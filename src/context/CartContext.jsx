@@ -28,14 +28,22 @@ const CartProvider = ({ children }) => {
 
     const handleDelete = () => {
         setCart([]);
-    }
+    };
+
+    const quantityCart = () => {
+        return cart.reduce((acc, item) => acc + item.quantity, 0);
+    };
+
+    const totalPrice = () => {
+        return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    };
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
     }, [cart])
 
     return (
-        <CartContext.Provider value={{ cart, setCart, handleAdd, handleDelete }}>
+        <CartContext.Provider value={{ cart, setCart, handleAdd, handleDelete, quantityCart, totalPrice }}>
             {children}
         </CartContext.Provider>
     );

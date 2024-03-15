@@ -1,8 +1,9 @@
-import { useCart } from "../../context/CartContext";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-    const { cart, handleDelete } = useCart();
+    const { cart, handleDelete, totalPrice } = useContext(CartContext);
     const navigate = useNavigate();
 
     return (
@@ -27,7 +28,12 @@ const Cart = () => {
                                     <p>Precio total: {product.price * product.quantity}</p>
                                 </div>
                             </div>
+
                         ))}
+                    </div>
+
+                    <div>
+                        <h3>Precio total del carrito: {totalPrice()}</h3>
                     </div>
 
                     <div className="flex justify-center space-x-4">
