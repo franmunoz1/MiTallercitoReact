@@ -38,12 +38,16 @@ const CartProvider = ({ children }) => {
         return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
     };
 
+    const deleteProduct = (productId) => {
+        setCart(cart.filter(item => item.id !== productId))
+    }
+
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
     }, [cart])
 
     return (
-        <CartContext.Provider value={{ cart, setCart, handleAdd, handleDelete, quantityCart, totalPrice }}>
+        <CartContext.Provider value={{ cart, setCart, handleAdd, handleDelete, quantityCart, totalPrice, deleteProduct }}>
             {children}
         </CartContext.Provider>
     );

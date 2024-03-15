@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 const Cart = () => {
-    const { cart, handleDelete, totalPrice } = useContext(CartContext);
+    const { cart, handleDelete, totalPrice, deleteProduct } = useContext(CartContext);
 
     const navigate = useNavigate();
 
@@ -51,7 +51,7 @@ const Cart = () => {
                                     Cantidad
                                 </div>
                                 <div>
-                                    <button>🗑️</button>
+                                    <button onClick={() => deleteProduct(product.id)}>🗑️</button>
                                 </div>
                             </div>
 
