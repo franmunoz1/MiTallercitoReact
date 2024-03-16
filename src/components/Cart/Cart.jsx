@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const Cart = () => {
     const { cart, handleDelete, totalPrice, deleteProduct, updateQuantity } = useContext(CartContext);
-    const [quantities, setQuantities] = useState({}); // State to manage quantities
+    const [quantities, setQuantities] = useState({});
     const navigate = useNavigate();
 
     const handleConfirm = () => {

@@ -1,7 +1,7 @@
-import { CartContext } from "../../context/CartContext";
 import { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
 import { useForm } from "react-hook-form";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase/config";
 
 const Checkout = () => {
@@ -16,18 +16,28 @@ const Checkout = () => {
             totalPrice: totalPrice(),
         };
 
-        const orderRef = collection(db, "orders");
+        const orderRefPromise = addDoc(collection(db, "orders"), order);
 
-        addDoc(orderRef, order).then((doc) => {
-            setOrderId(doc.id);
-            handleDelete();
+        orderRefPromise.then((docRef) => {
+            setOrderId(docRef.id);
+
+            const promises = cart.map((product) => {
+                const productDocRef = doc(db, "products", product.id);
+                return updateDoc(productDocRef, {
+                    stock: increment(-product.quantity)
+                });
+            });
+
+            Promise.all(promises).then(() => {
+                handleDelete();
+            });
         });
     };
 
     if (orderId) {
         return (
             <div className="py-8 p-2">
-                <h2 className="text-2xl font-semibold mb-4">Gracias por tu compra!</h2>
+                <h2 className="text-2xl font-semibold mb-4">¡Gracias por tu compra!</h2>
                 <p className="text-lg">Tu id de pedido es: {orderId}</p>
             </div>
         );

@@ -39,22 +39,32 @@ const ItemDetail = ({ item }) => {
                     <p className="text-gray-600">Precio: ${item.price}</p>
                     <p className="text-gray-600">Stock disponible: {item.stock}</p>
 
-                    <div className="mt-4 flex items-center">
-                        <label htmlFor="quantity" className="mr-2">Cantidad:</label>
-                        <button onClick={handleLess} className="px-3 py-1 bg-gray-200 rounded-md text-gray-600 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">-</button>
-                        <p className="px-4">{quantity}</p>
-                        <button onClick={handlePlus} className="px-3 py-1 bg-gray-200 rounded-md text-gray-600 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">+</button>
-                    </div>
+                    {item.stock === 0 ? (
+                        <div>Producto sin stock</div>
+                    ) : (
+                        <div>
+                            <div className="mt-4 flex items-center">
+                                <label htmlFor="quantity" className="mr-2">Cantidad:</label>
+                                <button onClick={handleLess} className="px-3 py-1 bg-gray-200 rounded-md text-gray-600 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">-</button>
+                                <p className="px-4">{quantity}</p>
+                                <button onClick={handlePlus} className="px-3 py-1 bg-gray-200 rounded-md text-gray-600 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">+</button>
+                            </div>
 
-                    <button
-                        onClick={() => {
-                            handleAdd(item, quantity);
-                            notify();
-                        }}
-                        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                        Agregar al carrito
-                    </button>
+                            <button
+                                onClick={() => {
+                                    handleAdd(item, quantity);
+                                    notify();
+                                }}
+                                className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    )}
+
+
+
+
                     <ToastContainer />
                 </div>
             </div>
