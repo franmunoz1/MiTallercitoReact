@@ -3,11 +3,13 @@ import { CartContext } from "../../context/CartContext";
 import { useForm } from "react-hook-form";
 import { collection, addDoc, doc, updateDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
     const [orderId, setOrderId] = useState("");
     const { cart, handleDelete, totalPrice } = useContext(CartContext);
     const { register, handleSubmit, watch } = useForm();
+    const navigate = useNavigate();
 
     const buy = (data) => {
         const order = {
@@ -85,14 +87,16 @@ const Checkout = () => {
                     {...register("phone")}
                     className="block w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-400"
                 />
-                <button
-                    type="submit"
-                    disabled={!isEmailValid}
-                    className={`bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded ${!isEmailValid ? "cursor-not-allowed opacity-50" : ""}`}
-                >
-                    Comprar
-                </button>
-                <button>Volver al carrito</button>
+                <div className="flex flex-row justify-center gap-3">
+                    <button
+                        type="submit"
+                        disabled={!isEmailValid}
+                        className={`bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded ${!isEmailValid ? "cursor-not-allowed opacity-50" : ""}`}
+                    >
+                        Comprar
+                    </button>
+                    <button onClick={() => navigate('/cart')} className="bg-yellow-600 hover:bg-yellow-800 text-white font-bold py-2 px-4 rounded">Volver al carrito</button>
+                </div>
             </form>
         </div>
     );
