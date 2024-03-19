@@ -7,13 +7,14 @@ import { db } from "../../firebase/config";
 const Checkout = () => {
     const [orderId, setOrderId] = useState("");
     const { cart, handleDelete, totalPrice } = useContext(CartContext);
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, watch } = useForm();
 
     const buy = (data) => {
         const order = {
             client: data,
             products: cart,
             totalPrice: totalPrice(),
+            date: new Date()
         };
 
         const orderRefPromise = addDoc(collection(db, "orders"), order);
@@ -33,6 +34,18 @@ const Checkout = () => {
             });
         });
     };
+
+    const email = watch("email");
+    const confirmEmail = watch("confirmEmail");
+
+    const isEmailValid = email === confirmEmail;
+
+    // if (cart.length == 0) {
+    //     return (
+    //         <div>Primero, debes añadir productos al carrito para realizar una compra</div>
+    //     )
+    // }
+
 
     if (orderId) {
         return (
@@ -60,6 +73,13 @@ const Checkout = () => {
                     className="block w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-400"
                 />
                 <input
+                    type="text"
+                    placeholder="Confirma tu email"
+                    {...register("confirmEmail")}
+                    className="block w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-400"
+                />
+                {isEmailValid ? null : <p className="text-red-500">Los correos electrónicos no coinciden</p>}
+                <input
                     type="number"
                     placeholder="Ingresa tu número de teléfono"
                     {...register("phone")}
@@ -67,10 +87,12 @@ const Checkout = () => {
                 />
                 <button
                     type="submit"
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                    disabled={!isEmailValid}
+                    className={`bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded ${!isEmailValid ? "cursor-not-allowed opacity-50" : ""}`}
                 >
                     Comprar
                 </button>
+                <button>Volver al carrito</button>
             </form>
         </div>
     );
