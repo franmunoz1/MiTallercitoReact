@@ -35,8 +35,19 @@ const CartProvider = ({ children }) => {
     };
 
     const totalPrice = () => {
+        console.log("card", cart)
         return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
     };
+
+    const updateQuantity = (productId, quantity) => {
+        const newCart = cart.map(item => {
+            if (item.id === productId) {
+                item.quantity = quantity;
+            }
+            return item;
+        });
+        setCart(newCart);
+    }
 
     const deleteProduct = (productId) => {
         setCart(cart.filter(item => item.id !== productId))
@@ -47,7 +58,7 @@ const CartProvider = ({ children }) => {
     }, [cart])
 
     return (
-        <CartContext.Provider value={{ cart, setCart, handleAdd, handleDelete, quantityCart, totalPrice, deleteProduct }}>
+        <CartContext.Provider value={{ cart, setCart, handleAdd, handleDelete, quantityCart, totalPrice, deleteProduct, updateQuantity }}>
             {children}
         </CartContext.Provider>
     );
