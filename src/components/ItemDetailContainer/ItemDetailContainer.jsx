@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 import ItemDetail from "../ItemDetail/ItemDetail"
-import { getProductById } from "../../helpers/getProducts"
+// import { getProductById } from "../../helpers/getProducts"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import Loader from "../Loader/Loader"
+import { doc, getDoc } from "firebase/firestore"
+import { db } from "../../firebase/config"
 
 const ItemDetailContainer = () => {
 
@@ -13,16 +15,21 @@ const ItemDetailContainer = () => {
 
     const { id } = useParams()
 
-    console.log(id)
+
 
     useEffect(() => {
-        getProductById(Number(id))
-            .then((res) => {
-                setItem(res)
-            })
-            .finally(() => {
+
+        const docRef = doc(db, "products", id)
+        getDoc(docRef)
+            .then((resp) => {
+
                 setLoading(false)
+
+                setItem(
+                    { ...resp.data(), id: resp.id }
+                )
             })
+
     }, [id])
 
     return (
