@@ -31,13 +31,14 @@ const ItemDetail = ({ item }) => {
 
     return (
         <div className="container mx-auto p-4">
-            <div className="flex items-center justify-center">
-                <img src={item.image} alt={item.title} className="w-1/2 rounded-lg shadow-lg" />
+            <div className="flex flex-col items-center md:flex-row md:items-start justify-center">
+                <img src={item.image} alt={item.title} className="w-full md:w-1/2 rounded-lg shadow-lg mb-4 md:mb-0" />
 
-                <div className="ml-4">
+                <div className="ml-4 w-full md:w-auto">
                     <h2 className="text-3xl font-bold text-gray-800">{item.title}</h2>
                     <p className="text-gray-600">Precio: ${item.price}</p>
                     <p className="text-gray-600">Stock disponible: {item.stock}</p>
+                    <p className="text-gray-600">Descripcion: {item.description}</p>
 
                     {item.stock === 0 ? (
                         <div>Producto sin stock</div>
@@ -62,13 +63,11 @@ const ItemDetail = ({ item }) => {
                         </div>
                     )}
 
-
-
-
                     <ToastContainer />
                 </div>
             </div>
         </div>
+
     );
 }
 
