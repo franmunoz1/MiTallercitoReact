@@ -42,12 +42,6 @@ const Checkout = () => {
 
     const isEmailValid = email === confirmEmail;
 
-    // if (cart.length == 0) {
-    //     return (
-    //         <div>Primero, debes añadir productos al carrito para realizar una compra</div>
-    //     )
-    // }
-
 
     if (orderId) {
         return (
