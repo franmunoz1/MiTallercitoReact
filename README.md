@@ -1,6 +1,7 @@
 # MiTallercitoReact
 
 MiTallercito es un e-commerce de venta de productos varios, en donde se distinguen 3 categorias: Niños, Muebles y Decoracion. 
+
 ![MiTallercito](./public/img/icon.jpg)
 
 ## Biblioteca utilizada de JS
