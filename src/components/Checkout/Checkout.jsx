@@ -27,6 +27,12 @@ const Checkout = () => {
         getOrderData();
     }, [orderId]);
 
+    useEffect(() => {
+        if (orderData) {
+            handleDelete();
+        }
+    }, [orderData, handleDelete]);
+
     const buy = (data) => {
         const order = {
             client: data,
@@ -47,15 +53,12 @@ const Checkout = () => {
                 });
             });
 
-            Promise.all(promises).then(() => {
-                handleDelete();
-            });
+            Promise.all(promises);
         });
     };
 
     const email = watch("email");
     const confirmEmail = watch("confirmEmail");
-
     const isEmailValid = email === confirmEmail;
 
     if (orderData) {
@@ -81,11 +84,16 @@ const Checkout = () => {
         );
     }
 
-
-
+    if (!orderData && cart.length === 0) {
+        return (
+            <div className="py-8 p-2 mx-auto w-[max-content] flex flex-col justify-center">
+                <h2 className="text-2xl font-semibold mb-4">No hay productos en el carrito</h2>
+                <button onClick={() => navigate('/')} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Volver a la tienda</button>
+            </div>
+        );
+    }
 
     return (
-
         <div className="py-8 p-2">
             <h1 className="text-3xl font-bold mb-6">Completa tus datos para finalizar</h1>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -103,7 +111,6 @@ const Checkout = () => {
             <div className="mt-6">
                 <p className="text-lg font-semibold">Total de la orden: ${totalPrice()}</p>
             </div>
-
             <form onSubmit={handleSubmit(buy)} className="space-y-4">
                 <input
                     type="text"
@@ -146,7 +153,6 @@ const Checkout = () => {
                 </div>
             </form>
         </div>
-
     );
 };
 
