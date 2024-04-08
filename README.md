@@ -45,7 +45,7 @@ npm run dev
 
 El proyecto se encuentra deployado en Vercel, el link de acceso es el siguiente:
 
-[Mi Tallercito]https://mi-tallercito.vercel.app/
+[Mi Tallercito](https://mi-tallercito.vercel.app/)
 
 ## Autor
 
