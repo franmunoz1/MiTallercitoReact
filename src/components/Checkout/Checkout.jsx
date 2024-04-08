@@ -7,13 +7,12 @@ import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
     const [orderId, setOrderId] = useState("");
-    const [orderData, setOrderData] = useState(null); // Estado para almacenar los datos de la orden
+    const [orderData, setOrderData] = useState(null);
     const { cart, handleDelete, totalPrice } = useContext(CartContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Función para obtener los datos de la orden cuando se actualiza el orderId
         const getOrderData = async () => {
             if (orderId) {
                 const docRef = doc(db, "orders", orderId);

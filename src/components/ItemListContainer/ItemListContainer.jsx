@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
 import './ItemListContainer.css'
-// import { getProductByCategory } from '../../helpers/getProducts'
 import { useParams } from 'react-router-dom'
 import Loader from '../Loader/Loader'
 import { collection, getDocs, query, where } from 'firebase/firestore'
