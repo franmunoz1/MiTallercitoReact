@@ -1,13 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"
+import { CONFIG } from "../config/env";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD8sYVWZoDduypWqC-QnAivP5s1exa5n7Y",
-    authDomain: "mitallercito-3e352.firebaseapp.com",
-    projectId: "mitallercito-3e352",
-    storageBucket: "mitallercito-3e352.appspot.com",
-    messagingSenderId: "413325784943",
-    appId: "1:413325784943:web:7663cbf2c454e16aa0da9a"
+    apiKey: CONFIG.FIREBASE_API_KEY,
+    authDomain: CONFIG.FIREBASE_AUTH_DOMAIN,
+    projectId: CONFIG.FIREBASE_PROJECT_ID,
+    storageBucket: CONFIG.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: CONFIG.FIREBASE_MESSAGING_SENDER_ID,
+    appId: CONFIG.FIREBASE_APP_ID
 };
 
 // Initialize Firebase
