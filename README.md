@@ -23,7 +23,9 @@ Para descargar el proyecto se debe seguir los siguientes pasos:
 
 1. Clonar el repositorio:
 
+```
 git clone https://github.com/franmunoz1/MiTallercitoReact.git
+```
 
 2. Instalar las dependencias:
 
@@ -33,7 +35,9 @@ npm install
 
 3. Correr el proyecto:
 
+```
 npm run dev
+```
 
 ## Deploy del proyecto
 
