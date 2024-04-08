@@ -1,5 +1,4 @@
 import ItemCount from '../ItemCount/ItemCount';
-import './CartWidget.css';
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 
