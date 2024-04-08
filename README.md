@@ -10,11 +10,13 @@ MiTallercito es un e-commerce de venta de productos varios, en donde se distingu
 - Firestore
 - React-router-dom
 - React-toastify
+- Sweetalert2
 - Tailwindcss
 
 ## Funcionalidades del proyecto
 - Los usuarios pueden visualizar todos los productos en el inicio y visualizarlos por categorias.
 - Los usuarios pueden ingresar a los detalles de productos y agregar la cantidad deseada al carrito.
+- Los usuarios pueden visualizar los productos agregados al carrito y eliminar cada uno si lo desean.
 - Una vez agregados al carrito, ingresamos a la parte de checkout donde se visualiza el total de la compra y se puede proceder a realizar el pago.
 - Se utiliza Firebase para el manejo de la base de datos de los productos y las ordenes de los usuarios.
 
