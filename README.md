@@ -27,7 +27,9 @@ git clone https://github.com/franmunoz1/MiTallercitoReact.git
 
 2. Instalar las dependencias:
 
+```
 npm install
+```
 
 3. Correr el proyecto:
 
