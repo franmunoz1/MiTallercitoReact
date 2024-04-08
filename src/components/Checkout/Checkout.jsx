@@ -20,7 +20,7 @@ const Checkout = () => {
                 if (docSnap.exists()) {
                     setOrderData(docSnap.data());
                 } else {
-                    console.log("No such document!");
+                    console.log("No existe el documento!");
                 }
             }
         };
@@ -80,6 +80,15 @@ const Checkout = () => {
                     ))}
                 </div>
                 <p className="mt-6">Total de la orden: ${orderData.totalPrice}</p>
+            </div>
+        );
+    }
+
+    if (!orderData && cart.length === 0) {
+        return (
+            <div className="py-8 p-2 mx-auto w-[max-content] flex flex-col justify-center">
+                <h2 className="text-2xl font-semibold mb-4">No hay productos en el carrito</h2>
+                <button onClick={() => navigate('/')} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Volver a la tienda</button>
             </div>
         );
     }
